@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>over coffee — questions for two</title>
+<meta name="theme-color" content="#f7f1e9">
+<style>
+:root{--ink:#302018;--muted:#77716d;--paper:#ffffff;--rose:#6b402c;--rose-dark:#4c2c1d;--line:#d9d9d7;--white:#ffffff;--sage:#8c8d8b;--gold:#9a765f}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button{font:inherit;cursor:pointer}
+body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cellipse cx='14' cy='14' rx='8.5' ry='11' transform='rotate(35 14 14)' fill='%235a3524'/%3E%3Cpath d='M7 21 C13 16 15 10 21 5' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") 14 14, auto}
+button,a{cursor:pointer}
+button:focus-visible{outline:3px solid #8caaa0;outline-offset:4px}
+.shell{max-width:1100px;margin:auto;padding:28px 22px 64px}
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:58px;font-family:ui-sans-serif,system-ui,sans-serif}
+.brand{display:flex;align-items:center;gap:10px;font-size:1rem;font-weight:800;letter-spacing:-.035em;text-transform:lowercase;color:var(--ink)}.brand-name{color:var(--ink)}.bean-logo{width:31px;height:31px;display:block;color:#5a3524;flex:none}
+.nav-note{font-size:.86rem;color:var(--muted)}
+.hero{text-align:center;max-width:700px;margin:0 auto 40px}.eyebrow{text-transform:uppercase;letter-spacing:.19em;color:var(--rose-dark);font:700 .72rem ui-sans-serif,system-ui,sans-serif}
+h1{font-size:clamp(3rem,8vw,5.7rem);line-height:.98;letter-spacing:-.055em;font-weight:750;margin:18px 0 20px}
+h1 em{color:var(--rose);font-weight:750}.hero p{font:1.06rem/1.8 ui-sans-serif,system-ui,sans-serif;color:var(--muted);max-width:590px;margin:0 auto}
+.pill-row{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:24px}.pill{border:1px solid var(--line);border-radius:99px;padding:8px 13px;font: .78rem ui-sans-serif,system-ui,sans-serif;color:#6c5d56;background:#fff}
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:44px 0 24px}
+.level-card{border:1px solid var(--line);background:#fff;border-radius:16px;padding:18px;text-align:left;transition:.2s;color:var(--ink)}.level-card.active{border-color:var(--rose);box-shadow:0 0 0 2px #6b402c18;background:#f5f5f4}.level-card .n{font:700 .7rem ui-sans-serif,system-ui,sans-serif;color:var(--rose-dark);letter-spacing:.12em}.level-card strong{display:block;font-size:1.15rem;font-weight:600;margin:9px 0 6px}.level-card small{font: .78rem/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--muted)}
+.game{max-width:760px;margin:auto}.progress-line{height:4px;background:#e9ddd2;border-radius:10px;overflow:hidden;margin-bottom:22px}.progress-fill{height:100%;background:var(--rose);width:0;transition:width .3s}
+.card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:clamp(24px,5vw,54px);box-shadow:0 16px 55px #634b3510;min-height:350px;display:flex;flex-direction:column;justify-content:space-between}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font: .78rem ui-sans-serif,system-ui,sans-serif;color:var(--muted)}.type{color:var(--rose-dark);background:#ececeb;border-radius:99px;padding:7px 11px;font-size:.72rem}
+.question{font-size:clamp(1.7rem,4.5vw,2.65rem);line-height:1.25;letter-spacing:-.025em;margin:36px 0;max-width:640px}.hint{font: .9rem/1.65 ui-sans-serif,system-ui,sans-serif;color:var(--muted);margin-top:-12px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.btn{border:1px solid var(--line);background:transparent;border-radius:12px;padding:13px 19px;color:var(--ink);font:600 .88rem ui-sans-serif,system-ui,sans-serif;transition:transform .15s,background .15s}.btn:hover{transform:translateY(-1px)}.btn.primary{background:var(--rose);border-color:var(--rose);color:white}.btn.primary:hover{background:var(--rose-dark)}.btn.soft{background:#f2f2f1}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.controls{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:17px}.count{font: .78rem ui-sans-serif,system-ui,sans-serif;color:var(--muted)}
+.bottom-note{max-width:700px;text-align:center;margin:42px auto 0;color:var(--muted);font: .85rem/1.7 ui-sans-serif,system-ui,sans-serif}.bottom-note strong{color:var(--ink)}
+.start-screen{text-align:center;padding:25px 0 12px}.start-screen .question{margin:26px auto 12px}.level-summary{font: .95rem/1.7 ui-sans-serif,system-ui,sans-serif;color:var(--muted);max-width:480px;margin:auto}
+footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:55px;padding-top:20px;font: .75rem ui-sans-serif,system-ui,sans-serif;color:var(--muted)}
+@media(max-width:650px){.shell{padding:20px 15px 42px}nav{margin-bottom:42px}.nav-note{max-width:145px;text-align:right}.levels{grid-template-columns:1fr;gap:8px;margin-top:30px}.level-card{display:grid;grid-template-columns:60px 1fr;column-gap:8px;align-items:center;padding:13px 15px}.level-card .n{grid-row:span 2}.level-card strong{margin:0}.level-card small{margin-top:4px}.card{min-height:380px;border-radius:21px}.actions .btn{flex:1}.controls{align-items:flex-start}.question{margin:30px 0}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav><div class="brand"><svg class="bean-logo" viewBox="0 0 48 48" aria-hidden="true"><path d="M33.7 5.8C23.4 2.8 11.3 12 8.2 23.1 5.3 33.2 11 41.6 20 42.1c10.2.5 19.5-9.4 20.1-20.4.4-7.5-1.9-13.9-6.4-15.9Z" fill="currentColor"/><path d="M34.4 8.2C24.8 15 22.3 23.1 21.1 29.3c-.9 4.7-2.7 8.4-6.4 11.2" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" opacity=".92"/></svg><span class="brand-name">over coffee</span></div><div class="nav-note">A little more honest. A little more connected.</div></nav>
+<header class="hero">
+<div class="eyebrow">75 questions for two people</div>
+<h1>Good questions.<br><em>Better connection.</em></h1>
+<p>A guided conversation for dates, new connections, and people who want to know each other beyond the surface. Take your time. There are no perfect answers.</p>
+<div class="pill-row"><span class="pill">✦ 3 levels of depth</span><span class="pill">♡ Questions + little dares</span><span class="pill">↗ Go at your own pace</span></div>
+</header>
+<div class="levels" id="levels">
+<button class="level-card active" data-level="0"><span class="n">LEVEL 01</span><strong>Make a move</strong><small>Just getting to know each other</small></button>
+<button class="level-card" data-level="1"><span class="n">LEVEL 02</span><strong>Now that we're here</strong><small>Values, patterns, and the real stuff</small></button>
+<button class="level-card" data-level="2"><span class="n">LEVEL 03</span><strong>Could this be it?</strong><small>Compatibility, commitment, and a future</small></button>
+</div>
+<main class="game">
+<div class="progress-line"><div class="progress-fill" id="progress"></div></div>
+<section class="card" aria-live="polite">
+<div class="card-top"><span id="levelLabel">LEVEL 01 · MAKE A MOVE</span><span class="type" id="typeLabel">GETTING TO KNOW YOU</span></div>
+<div>
+<div class="question" id="question">What is a small thing that instantly makes a day feel worth it to you?</div>
+<div class="hint" id="hint">Take turns answering. Listening is part of the question.</div>
+</div>
+<div class="actions">
+<button class="btn primary" id="next">Next question →</button>
+<button class="btn soft" id="again">Choose for me ↻</button>
+<button class="btn" id="pass">Pass for now</button>
+</div>
+</section>
+<div class="controls"><button class="btn" id="prev">← Previous</button><span class="count" id="count">Question 1 of 25</span><button class="btn" id="shuffle">Shuffle this level ↻</button></div>
+</main>
+<div class="bottom-note"><strong>A gentle rule:</strong> either person can pass, pause, or ask to come back to a question. You don't owe anyone a disclosure. The goal is curiosity, not pressure. For the deeper questions, listen to understand—not to win or fix.</div>
+<footer><span>over coffee · questions for two</span><span>Inspired by research on reciprocal self-disclosure, active listening, and emotional responsiveness.</span></footer>
+</div>
+<script>
+const questions = [{"text": "What is a small thing that instantly makes a day feel worth it to you?", "type": "connection"}, {"text": "What kind of person do you become when you feel completely comfortable around someone?", "type": "personality"}, {"text": "What belief did you grow up with that you’ve kept, changed, or quietly outgrown?", "type": "beliefs"}, {"text": "What are you trying to make more room for in your life right now?", "type": "ambition"}, {"text": "What does a genuinely good first date feel like to you—and what makes one feel awkward?", "type": "dating"}, {"text": "What’s something people often misunderstand about you at first?", "type": "personality"}, {"text": "When you’re stressed, do you want advice, reassurance, distraction, practical help, or space?", "type": "emotional"}, {"text": "What is a small, ordinary thing you find weirdly romantic?", "type": "dating"}, {"text": "Which matters more to you in a relationship: feeling understood, feeling admired, feeling safe, or feeling free? Why?", "type": "values"}, {"text": "What’s a question you wish people asked you more often?", "type": "connection"}, {"text": "DARE · Look into each other’s eyes for 20 seconds. No talking, no performing—just notice what comes up. You can look away or pass.", "type": "dare"}, {"text": "What does your ideal everyday life look like—not a holiday, just a Tuesday?", "type": "life"}, {"text": "What’s one ambition you have that you don’t talk about much?", "type": "ambition"}, {"text": "How do you usually show someone you like them when you’re trying not to be too obvious?", "type": "dating"}, {"text": "What’s a quality you respect in others but are still learning to practice yourself?", "type": "growth"}, {"text": "What role do friends, family, community, or chosen family play in your life?", "type": "relationships"}, {"text": "When you disagree with someone, what helps you stay curious instead of getting defensive?", "type": "conflict"}, {"text": "What’s a personal boundary that helps you feel respected?", "type": "boundaries"}, {"text": "What do you spend money on happily, and what do you think is never worth the cost?", "type": "financials"}, {"text": "What kind of compliment actually stays with you after you hear it?", "type": "connection"}, {"text": "DARE · Each share one song that says something about you. Explain one line, sound, or memory that makes it yours.", "type": "dare"}, {"text": "What’s something you’ve changed your mind about in the last few years?", "type": "beliefs"}, {"text": "Are you more energized by planning, spontaneity, solitude, or being around people—and how does that show up on a date?", "type": "personality"}, {"text": "What does being emotionally mature look like to you in real life?", "type": "values"}, {"text": "What would make you excited to see someone for a second date?", "type": "dating"}, {"text": "What did love look like in the home you grew up in, and what parts do you want to repeat or do differently?", "type": "family"}, {"text": "When you’re overwhelmed, what signs might someone notice before you say you’re struggling?", "type": "emotional"}, {"text": "What helps you feel safe enough to be honest, especially when the truth might disappoint someone?", "type": "trust"}, {"text": "What does commitment mean to you before marriage, and what would it mean after?", "type": "commitment"}, {"text": "Which is harder for you: asking for help, receiving help, apologizing, or setting a boundary? Why?", "type": "growth"}, {"text": "How do you tell the difference between intuition, fear, and an old wound talking?", "type": "reflection"}, {"text": "What financial habits or money stories did you inherit from your family?", "type": "financials"}, {"text": "What does a fair division of chores, planning, and emotional labor look like to you?", "type": "relationships"}, {"text": "When you feel hurt, do you tend to pursue a conversation, withdraw, get analytical, or act like nothing happened?", "type": "conflict"}, {"text": "What’s an experience that changed your understanding of what other people might be carrying?", "type": "empathy"}, {"text": "DARE · Take turns finishing this sentence: “Something I appreciate about how you show up is…” Be specific, not flattering for its own sake.", "type": "dare"}, {"text": "How important are faith, spirituality, religion, or a non-religious worldview in the way you make decisions?", "type": "beliefs"}, {"text": "What kind of life would feel successful to you even if nobody else was impressed by it?", "type": "ambition"}, {"text": "How much independence do you need inside a close relationship, and how would you protect it kindly?", "type": "boundaries"}, {"text": "What does a good apology include—and what makes an apology feel empty to you?", "type": "conflict"}, {"text": "How do you prefer to make big decisions: talking it through, researching, sleeping on it, trusting instinct, or something else?", "type": "personality"}, {"text": "What are your expectations around saving, debt, spending, and talking openly about money with a partner?", "type": "financials"}, {"text": "What does mental health care look like for you when life gets difficult? What support is helpful, and what isn’t?", "type": "emotional"}, {"text": "What kinds of affection feel natural to you, and which ones take more effort or trust?", "type": "intimacy"}, {"text": "What does loyalty mean beyond simply not cheating?", "type": "trust"}, {"text": "DARE · Each name one thing you’d like to understand about the other person better. The listener’s only job is to reflect back what they heard—no fixing or debating.", "type": "dare"}, {"text": "If your work or ambition required a major sacrifice, what would you be unwilling to give up?", "type": "ambition"}, {"text": "How should a couple handle friendships, exes, privacy, and social media in a way that feels respectful to both?", "type": "boundaries"}, {"text": "What’s a pattern you’re trying not to repeat in your relationships?", "type": "growth"}, {"text": "What would you need to know about someone before you could imagine building a life with them?", "type": "commitment"}, {"text": "What are you afraid a long-term partner might eventually discover about you—and what would you hope they understand instead?", "type": "vulnerability"}, {"text": "When you picture a shared future, what parts of your current life must remain yours?", "type": "identity"}, {"text": "What are your non-negotiables about children, parenting, or a life without children?", "type": "future"}, {"text": "How do you imagine handling a season when one person earns much more, loses work, or needs care?", "type": "financials"}, {"text": "What would make you feel lonely inside a relationship, even if you lived together and spent lots of time together?", "type": "intimacy"}, {"text": "What does forgiveness mean to you, and what kinds of harm would require more than an apology to repair?", "type": "conflict"}, {"text": "How should we respond if one of us is struggling with depression, anxiety, burnout, or another mental-health challenge?", "type": "emotional"}, {"text": "What do you believe partners owe each other—and what must each person still take responsibility for themselves?", "type": "beliefs"}, {"text": "What would a fair, respectful approach to caring for aging parents or family obligations look like?", "type": "family"}, {"text": "Which differences between us could enrich a relationship, and which would need active negotiation?", "type": "compatibility"}, {"text": "DARE · Sit hand-in-hand for 30 seconds in silence. Afterwards, each person can share one word for what the moment felt like—or pass.", "type": "dare"}, {"text": "What are your expectations about marriage, engagement, or choosing not to marry? What do those choices mean to you?", "type": "commitment"}, {"text": "How do you want conflict to work in a home you share? What rules would protect both of you when emotions run high?", "type": "conflict"}, {"text": "What level of financial transparency would you expect before moving in together, marrying, or sharing expenses?", "type": "financials"}, {"text": "If our ambitions pulled us toward different cities or countries, how would you want us to make that decision?", "type": "future"}, {"text": "What does a meaningful, fulfilling sex life require besides attraction—and how should partners talk about mismatched desire?", "type": "intimacy"}, {"text": "What personal history or trigger might affect how you react in a relationship, and what helps you take responsibility for it?", "type": "growth"}, {"text": "How much alone time do you need to feel like yourself, and how would you communicate that without making a partner feel rejected?", "type": "identity"}, {"text": "What would you want us to do if one of us changed in a major way—beliefs, career, health, identity, or priorities?", "type": "future"}, {"text": "What does exclusivity mean to you in practice, and what conversations should happen before assumptions are made?", "type": "commitment"}, {"text": "DARE · Each tell the other one thing you feel grateful for about this connection so far. Keep it honest and pressure-free; either person may pass.", "type": "dare"}, {"text": "What would be a respectful plan if we discovered we want fundamentally different futures?", "type": "compatibility"}, {"text": "How do you define a partnership that stays fair through illness, unemployment, caregiving, or other uneven seasons?", "type": "relationships"}, {"text": "What do you need to see consistently over time before you trust someone with your most vulnerable self?", "type": "trust"}, {"text": "If this became a lasting relationship, what would you hope we help each other become—and what would you never want us to lose?", "type": "future"}];
+const levels = [
+ {title:"Make a move", short:"LEVEL 01 · MAKE A MOVE", subtitle:"Just getting to know each other", start:0,end:25},
+ {title:"Now that we're here", short:"LEVEL 02 · NOW THAT WE'RE HERE", subtitle:"Values, patterns, and the real stuff", start:25,end:50},
+ {title:"Could this be it?", short:"LEVEL 03 · COULD THIS BE IT?", subtitle:"Compatibility, commitment, and a future", start:50,end:75}
+];
+const labels={connection:"CONNECTION",personality:"PERSONALITY",beliefs:"BELIEFS & VALUES",ambition:"AMBITION",dating:"DATING",emotional:"EMOTIONAL WELLBEING",values:"VALUES",life:"LIFE",relationships:"RELATIONSHIPS",growth:"GROWTH",family:"FAMILY",trust:"TRUST",conflict:"CONFLICT",financials:"MONEY & PRACTICAL LIFE",boundaries:"BOUNDARIES",intimacy:"INTIMACY",commitment:"COMMITMENT",vulnerability:"VULNERABILITY",future:"THE FUTURE",compatibility:"COMPATIBILITY",identity:"IDENTITY",dare:"LITTLE DARE"};
+let level=0, order=[...Array(25)].map((_,i)=>i), pos=0, seen=new Set();
+const $=id=>document.getElementById(id);
+function currentIndex(){return levels[level].start+order[pos]}
+function render(){
+ const idx=currentIndex(), item=questions[idx], lev=levels[level];
+ $("levelLabel").textContent=lev.short;
+ $("typeLabel").textContent=labels[item.type]||"REFLECTION";
+ $("question").textContent=item.text;
+ $("hint").textContent=item.type==="dare"?"A small invitation, not a test. Either person can pass or adapt it.":"Take turns answering. Listening is part of the question.";
+ $("count").textContent=`Question ${pos+1} of 25`;
+ $("progress").style.width=`${((pos+1)/25)*100}%`;
+ $("prev").disabled=pos===0;
+ document.querySelectorAll(".level-card").forEach((b,i)=>b.classList.toggle("active",i===level));
+ seen.add(idx);
+}
+function shuffleOrder(keepCurrent=false){
+ const current=order[pos];
+ for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]]}
+ if(keepCurrent){const k=order.indexOf(current);[order[0],order[k]]=[order[k],order[0]];pos=0}
+}
+function next(){
+ if(pos<24){pos++;render();return}
+ if(level<2){level++;order=[...Array(25)].map((_,i)=>i);shuffleOrder();pos=0;render()}
+ else {$("question").textContent="You made room for a real conversation. That matters."; $("typeLabel").textContent="A MOMENT TO KEEP"; $("hint").textContent="What did you learn about each other that you want to remember?"; $("next").textContent="Start again ↻"; $("count").textContent="75 questions explored"; $("progress").style.width="100%"; $("prev").disabled=false}
+}
+$("next").addEventListener("click",()=>{if($("next").textContent.includes("Start again")){level=0;order=[...Array(25)].map((_,i)=>i);shuffleOrder();pos=0;$("next").textContent="Next question →";render()}else next()});
+$("again").addEventListener("click",()=>{const old=order[pos];let candidates=order.filter(x=>x!==old);const pick=candidates[Math.floor(Math.random()*candidates.length)];order[pos]=pick;render()});
+$("pass").addEventListener("click",next);
+$("prev").addEventListener("click",()=>{if(pos>0){pos--;render()}else if(level>0){level--;order=[...Array(25)].map((_,i)=>i);pos=24;render()}});
+$("shuffle").addEventListener("click",()=>{shuffleOrder(true);render()});
+document.querySelectorAll(".level-card").forEach(b=>b.addEventListener("click",()=>{level=Number(b.dataset.level);order=[...Array(25)].map((_,i)=>i);shuffleOrder();pos=0;render();document.querySelector(".game").scrollIntoView({behavior:"smooth",block:"start"})}));
+render();
+</script>
+</body></html>
